@@ -15,8 +15,9 @@ ln -s "$PKG_PATH/usr/zookeeper/bin/zkCli.sh" "$PKG_PATH/bin/zkCli.sh"
 # Generate the build artifacts and store in the local cache, to be used later
 # during the Maven packaging step.
 cd /pkg/src/exhibitor
-./gradlew install
-./gradlew -b exhibitor-standalone/src/main/resources/buildscripts/standalone/gradle/build.gradle shadowJar
+
+./gradlew -Dhttps.proxyHost=web-proxy.houston.hp.com -Dhttps.proxyPort=8080 install
+./gradlew -Dhttps.proxyHost=web-proxy.houston.hp.com -Dhttps.proxyPort=8080 -b exhibitor-standalone/src/main/resources/buildscripts/standalone/gradle/build.gradle shadowJar
 
 exhibitor_path="$PKG_PATH"/usr/exhibitor
 mkdir -p "$exhibitor_path"
