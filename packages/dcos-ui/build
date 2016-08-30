@@ -2,9 +2,9 @@
 
 cd "/pkg/src/dcos-ui"
 
-npm install -g npm@3.9.1
+npm --proxy http://web-proxy.houston.hp.com:8080 install -g npm@3.9.1
 
-npm install
+npm --proxy http://web-proxy.houston.hp.com:8080 install
 
 echo "module.exports = {};" > ./src/js/config/Config.dev.js
 npm run scaffold
