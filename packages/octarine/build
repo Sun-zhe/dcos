@@ -4,7 +4,9 @@ mkdir -p /pkg/src/github.com/dcos
 # Create the GOPATH for the go tool to work properly
 mv /pkg/src/octarine /pkg/src/github.com/dcos/
 cd /pkg/src/github.com/dcos/octarine/
-go get
-go install
+
+alias go='https_proxy=https://web-proxy.houston.hp.com:8080 go'
+https_proxy=https://web-proxy.houston.hp.com:8080 go get
+https_proxy=https://web-proxy.houston.hp.com:8080 go install
 # Copy the build from the bin to the correct place
 cp -r /pkg/bin/ "$PKG_PATH"

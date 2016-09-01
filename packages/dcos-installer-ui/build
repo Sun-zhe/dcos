@@ -1,6 +1,6 @@
 #!/bin/bash
 cd "/pkg/src/dcos-installer-ui"
-npm install
+npm --proxy http://web-proxy.houston.hp.com:8080 install
 echo "module.exports = {};" > ./src/js/config/Config.dev.js
 
 npm run dist
